@@ -17,6 +17,7 @@ class TestingNeo4JController extends Controller
 
     public function index(): JsonResponse
     {
+        // Create a new person in graph database.
         $result = $this->neo4jClient->run(<<<'CYPHER'
 CREATE (p:Person {name: 'German Rocha'})
 RETURN p
