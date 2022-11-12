@@ -39,6 +39,7 @@ return [
             'driver' => 'neo4j',
             'protocol' => 'bolt',
             'host' => env('NEO4J_HOST', 'localhost'),
+            'database' => env('NEO4J_DATABASE', 'neo4j'),
             'port' => (int) env('NEO4J_PORT', 7687),
             'username' => env('NEO4J_USERNAME', 'neo4j'),
             'password' => env('NEO4J_PASSWORD', 'password'),
