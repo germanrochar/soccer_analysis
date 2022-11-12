@@ -33,15 +33,16 @@ class TestNeo4JQueries extends Command
         $client = ClientBuilder::create()->withDriver('default', 'bolt://developer:secret@localhost')->build();
 
         $result = $client->run(<<<'CYPHER'
-MERGE (neo4j:Database {name: $dbName}) - [:HasRating] - (rating:Rating {value: 10})
-RETURN neo4j, rating
+CREATE (p:Person {name: 'Manuel Rocha'})
+RETURN p
 CYPHER, ['dbName' => 'neo4j'])->first();
 
-        $neo4j = $result->get('neo4j');
-        $rating = $result->get('rating');
+        $person = $result->get('p');
+        $this->info('Profile matched: '. $person->getProperty('name'));
 
-        // Outputs "neo4j is 10 out of 10"
-        echo $neo4j->getProperty('name').' is '.$rating->getProperty('value') . ' out of 10!';
+        info('result', ['neo4j' => $result]);
+
+        $this->info('Queries finished successfully.');
 
         return Command::SUCCESS;
     }
