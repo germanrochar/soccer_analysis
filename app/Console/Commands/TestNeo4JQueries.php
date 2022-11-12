@@ -4,9 +4,19 @@ namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
 use Laudis\Neo4j\ClientBuilder;
+use Laudis\Neo4j\Contracts\ClientInterface;
 
 class TestNeo4JQueries extends Command
 {
+    private ClientInterface $neo4jClient;
+
+    public function __construct(ClientInterface $neo4jClient)
+    {
+        parent::__construct();
+
+        $this->neo4jClient = $neo4jClient;
+    }
+
     /**
      * The name and signature of the console command.
      *
@@ -30,9 +40,7 @@ class TestNeo4JQueries extends Command
     {
         $this->info('Running Neo4J Queries...');
 
-        $client = ClientBuilder::create()->withDriver('default', 'bolt://developer:secret@localhost')->build();
-
-        $result = $client->run(<<<'CYPHER'
+        $result = $this->neo4jClient->run(<<<'CYPHER'
 CREATE (p:Person {name: 'Manuel Rocha'})
 RETURN p
 CYPHER, ['dbName' => 'neo4j'])->first();
