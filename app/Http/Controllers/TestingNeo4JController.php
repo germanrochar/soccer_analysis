@@ -18,8 +18,9 @@ class TestingNeo4JController extends Controller
     public function index(): JsonResponse
     {
         // Create a new person in graph database.
+        // Create a repository where this command is executed. (Extra layer of validation)
         $result = $this->neo4jClient->run(<<<'CYPHER'
-CREATE (p:Person {name: 'German Rocha'})
+CREATE (p:Person {name: 'Jane Doe'})
 RETURN p
 CYPHER, ['dbName' => Config::get('database.connections.neo4j.database')])->first();
 
