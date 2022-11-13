@@ -43,8 +43,6 @@ class TestNeo4JQueries extends Command
 
         // TODO: create a new command to import data from csv file and set up the database.
         // TODO: set up constraints for each node
-        // LOAD CSV FROM 'https://soccer-csv-files.s3.us-west-2.amazonaws.com/all_players.csv'
-        // as line CREATE (:Person {name: line[0], last_name: line[1], address: line[2], city: line[3], state: line[4], zip_code: line[5]})
 
         Excel::import(new ImportTeams($this->neo4jClient), 'all_players.csv', 's3');
 //        $result = $this->neo4jClient->run(<<<'CYPHER'

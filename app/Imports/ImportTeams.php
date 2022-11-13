@@ -20,16 +20,12 @@ class ImportTeams implements ToCollection
     */
     public function collection(Collection $rows)
     {
-        $result = $this->neo4jClient->run(<<<'CYPHER'
-MERGE(p:Person {name: 'Testing'}) RETURN p
-CYPHER, ['dbName' => 'neo4j'])->first();
-
-        $person = $result->get('p');
-
-        info('getting a person.', ['person' => $person]);
-
         foreach ($rows as $row) {
-            info('testing.', ['row' => $row[0]]);
+            if (null !== $row[1]) {
+                $this->neo4jClient->run(<<<'CYPHER'
+MERGE(p:Person {name: $name}) RETURN p
+CYPHER, ['name' => $row[1]]);
+            }
         }
     }
 }
