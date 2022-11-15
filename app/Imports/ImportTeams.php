@@ -2,17 +2,19 @@
 
 namespace App\Imports;
 
+use App\CommandBus;
+use App\Commands\CreateSeasonCommand;
+use App\Commands\CreateTeamCommand;
 use Illuminate\Support\Collection;
-use Laudis\Neo4j\Contracts\ClientInterface;
 use Maatwebsite\Excel\Concerns\ToCollection;
 
 class ImportTeams implements ToCollection
 {
-    private ClientInterface $neo4jClient;
+    private CommandBus $commandBus;
 
-    public function __construct(ClientInterface $neo4jClient)
+    public function __construct(CommandBus $commandBus)
     {
-       $this->neo4jClient = $neo4jClient;
+       $this->commandBus  = $commandBus;
     }
 
     /**
@@ -20,12 +22,16 @@ class ImportTeams implements ToCollection
     */
     public function collection(Collection $rows)
     {
+        $this->commandBus->handle(new CreateSeasonCommand('2022-2023'));
+
+        $counter = 0;
         foreach ($rows as $row) {
-            if (null !== $row[1]) {
-                $this->neo4jClient->run(<<<'CYPHER'
-MERGE(p:Person {name: $name}) RETURN p
-CYPHER, ['name' => $row[1]]);
+            if ($counter < 2) {
+                $counter++;
+                continue;
             }
+
+            $this->commandBus->handle(new CreateTeamCommand($row->toArray()));
         }
     }
 }
