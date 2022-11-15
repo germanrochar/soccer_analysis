@@ -40,11 +40,6 @@ class TestNeo4JQueries extends Command
     public function handle()
     {
         $this->info('Running Neo4J Queries...');
-
-        // TODO: create a new command to import data from csv file and set up the database.
-        // TODO: set up constraints for each node
-
-        Excel::import(new ImportTeams($this->neo4jClient), 'all_players.csv', 's3');
 //        $result = $this->neo4jClient->run(<<<'CYPHER'
 //LOAD CSV FROM 'https://soccer-csv-files.s3.us-west-2.amazonaws.com/all_players.csv' as line
 //MERGE(p:Person {name: line[1]})
