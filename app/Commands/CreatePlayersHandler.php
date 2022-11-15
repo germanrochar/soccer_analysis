@@ -4,7 +4,7 @@ namespace App\Commands;
 
 use Laudis\Neo4j\Contracts\ClientInterface;
 
-class CreatePlayerHandler
+class CreatePlayersHandler
 {
     private ClientInterface $neo4jClient;
 
@@ -13,7 +13,7 @@ class CreatePlayerHandler
         $this->neo4jClient = $neo4jClient;
     }
 
-    public function __invoke(CreatePlayerCommand $command): void
+    public function __invoke(CreatePlayersCommand $command): void
     {
         $row = $command->getRow();
 

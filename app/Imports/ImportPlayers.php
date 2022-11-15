@@ -3,7 +3,7 @@
 namespace App\Imports;
 
 use App\CommandBus;
-use App\Commands\CreatePlayerCommand;
+use App\Commands\CreatePlayersCommand;
 use Illuminate\Support\Collection;
 use Maatwebsite\Excel\Concerns\ToCollection;
 
@@ -28,7 +28,7 @@ class ImportPlayers implements ToCollection
                 continue;
             }
 
-            $this->commandBus->handle(new CreatePlayerCommand($row->toArray()));
+            $this->commandBus->handle(new CreatePlayersCommand($row->toArray()));
         }
     }
 }

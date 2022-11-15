@@ -4,7 +4,7 @@ namespace App\Imports;
 
 use App\CommandBus;
 use App\Commands\CreateSeasonCommand;
-use App\Commands\CreateTeamCommand;
+use App\Commands\CreateTeamsCommand;
 use Illuminate\Support\Collection;
 use Maatwebsite\Excel\Concerns\ToCollection;
 
@@ -31,7 +31,7 @@ class ImportTeams implements ToCollection
                 continue;
             }
 
-            $this->commandBus->handle(new CreateTeamCommand($row->toArray()));
+            $this->commandBus->handle(new CreateTeamsCommand($row->toArray()));
         }
     }
 }

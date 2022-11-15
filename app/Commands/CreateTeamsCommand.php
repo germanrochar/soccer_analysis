@@ -2,10 +2,9 @@
 
 namespace App\Commands;
 
-class CreatePlayerCommand
+class CreateTeamsCommand
 {
     private array $row;
-
 
     // @TODO: add docs specifying the contents of array $row
     public function __construct(array $row)
