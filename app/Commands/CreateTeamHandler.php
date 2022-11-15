@@ -19,12 +19,13 @@ class CreateTeamHandler
 
         $this->neo4jClient->run(<<<'CYPHER'
 MERGE(t:Team {name: $name})
-MERGE(m:Manager {name: $name})
+MERGE(m:Manager {name: $manager_name})
 MERGE(s:Season {name: '2022-2023'})
 MERGE (m)-[rm:MANAGES]->(t)
 MERGE (t)-[rc:COMPETES {pl: $pl, pos: $pos, pj: $pj, goals: $goals, ass: $ass, gtp: $gtp, tp: $tp, tpint: $tpint, ta: $ta, tr: $tr, gls90: $gls90, ast90: $ast90, ga90: $ga90, gtp90: $gtp90, gatp: $gatp, xG: $xG, npxG: $npxG, xAG: $xAG, npxGxAG: $npxGxAG}]->(s)
 CYPHER, [
             'name' => $row[0],
+            'manager_name' => $row[29],
             'pl' => $row[1],
             'pos' => $row[2],
             'pj' => $row[3],

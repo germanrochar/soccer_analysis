@@ -6,19 +6,16 @@ use App\CommandBus;
 use App\Imports\ImportPlayers;
 use App\Imports\ImportTeams;
 use Illuminate\Console\Command;
-use Laudis\Neo4j\Contracts\ClientInterface;
 use Maatwebsite\Excel\Facades\Excel;
 
 class PopulateGraphDBFromCSV extends Command
 {
-    private ClientInterface $neo4jClient;
     private CommandBus $commandBus;
 
-    public function __construct(ClientInterface $neo4jClient, CommandBus $commandBus)
+    public function __construct(CommandBus $commandBus)
     {
         parent::__construct();
 
-        $this->neo4jClient = $neo4jClient;
         $this->commandBus = $commandBus;
     }
 
@@ -43,13 +40,11 @@ class PopulateGraphDBFromCSV extends Command
      */
     public function handle()
     {
-        $this->info('Importing data...');
+        $this->info('Importing data from csv files...');
 
-        // TODO: create a new command to import data from csv file and set up the database.
         // TODO: set up constraints for each node
-
         Excel::import(new ImportTeams($this->commandBus), 'all_teams.csv', 's3');
-//        Excel::import(new ImportPlayers($this->neo4jClient, $this->commandBus), 'all_players.csv', 's3');
+        Excel::import(new ImportPlayers($this->commandBus), 'all_players.csv', 's3');
 
         $this->info('CSV data imported successfully.');
 
