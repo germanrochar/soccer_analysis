@@ -44,7 +44,7 @@ NEO4J_DATABASE=neo4j
 NEO4J_USERNAME=my-username
 NEO4J_PASSWORD=my-password
 NEO4J_USE_SSL=false
-- ```
+```
 - Please keep the db name as `neo4j` since this is the default DB used by `Neo4J Desktop`.
 - Finally, run `php artisan db:import` from the root of the repository. This will run a command that imports the data from csv files into the graph database.
 - Enjoy playing around with the database.
