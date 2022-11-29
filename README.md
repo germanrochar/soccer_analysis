@@ -10,7 +10,6 @@ a custom implementation of the [neo4j-php-client](https://github.com/neo4j-php/n
 
 Therefore, a custom implementation was used for the project.
 
-
 ## Installation
 
 **Prerequisites**
