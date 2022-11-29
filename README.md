@@ -1,17 +1,24 @@
-# CSV Importer
-This is an academic project that Uses Laravel and Neo4J to import statistics from the main soccer league in Mexico (Liga MX) and store it in a graph database managed with Neo4J.
+# Liga MX | CSV Importer
+This is an academic project that uses Laravel and Neo4J to import statistics from the main soccer league in Mexico (_Liga MX_) and stores into a graph database using a Neo4J driver. After running the importer, you will get a populated graph database with the statistics of players, teams and coaches in _Liga Mx_. From this point, is up to you how to use this database. If you found this helpful in any way, please reach out to me and tell me your experience at [@kemankahn](https://twitter.com/KemanKahn).
 
 ## Introduction
 
-The main purpose of the project is to create an import tool that takes data from csv files.
+I created this project to help accelerate the process to analyze statistics of the main soccer league in Mexico. I noticed people was struggling to run complex queries in relational databases but didn't want to design and populate a NoSQL database. Therefore, I decided to help and create an importer that can set up a graph database with the statistics of players, teams and coaches in _Liga MX_ so they can focus on analyzing the data.
 
-The main purpose of the project is to create a visual interface where anyone can see statistics of the latest season in _Liga Mx. All statistics about the games, players, managers, etc. will be imported from a csv file and stored in a graph database using Neo4j. It's important to mention
-that even though there are a couple open source projects available to integrate neo4j with Eloquent, we decided to use 
-a custom implementation of the [neo4j-php-client](https://github.com/neo4j-php/neo4j-php-client) because we don't need to perform any complex queries and at this moment, all open source projects are not reliable. As neo4j mentions in their website: 
-> The community drivers have been graciously contributed by the Neo4j community. Many of them are fully featured and well-maintained, but some may not be. Neo4j does not take any responsibility for their usability. 
+I'm taking the statistics from the following website: https://fbref.com/. This website keeps track of all the statistics from all the main soccer leagues in the world. For _Liga MX_, you can find all the statistics [here](https://fbref.com/es/comps/31/stats/Estadisticas-de-Liga-MX#all_stats_standard). You should see two tables like these:
 
-Therefore, a custom implementation was used for the project.
+![image-1](https://soccer-project-images-readme.s3.us-west-2.amazonaws.com/image-1.png)
+<p style="text-align: center"><b>Image 1 | Teams</b></p>
 
+![image-2](https://soccer-project-images-readme.s3.us-west-2.amazonaws.com/image-1.png)
+<p style="text-align: center"><b>Image 2 | Players</b></p>
+
+These are the tables I'm importing into the graph database and these are the csv files you can export from the website:
+
+- [Teams CSV](https://soccer-csv-files.s3.us-west-2.amazonaws.com/all_teams.csv) (Image 1)
+- [Players CSV](https://soccer-csv-files.s3.us-west-2.amazonaws.com/all_players.csv) (Image 2)
+
+If you want to take a look at the information, please click on the links above and download the csv files.
 ## Installation
 
 **Prerequisites**
