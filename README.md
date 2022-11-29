@@ -7,11 +7,11 @@ I created this project to help accelerate the process to analyze statistics of t
 
 I'm taking the statistics from the following website: https://fbref.com/. This website keeps track of all the statistics from all the main soccer leagues in the world. For _Liga MX_, you can find all the statistics [here](https://fbref.com/es/comps/31/stats/Estadisticas-de-Liga-MX#all_stats_standard). You should see two tables like these:
 
+_Teams_:
 ![image-1](https://soccer-project-images-readme.s3.us-west-2.amazonaws.com/image-1.png)
-<p style="text-align: center"><b>Image 1 | Teams</b></p>
 
+_Players_:
 ![image-2](https://soccer-project-images-readme.s3.us-west-2.amazonaws.com/image-1.png)
-<p style="text-align: center"><b>Image 2 | Players</b></p>
 
 These are the tables I'm importing into the graph database and these are the csv files you can export from the website:
 
@@ -34,7 +34,6 @@ If you want to take a look at the information, please click on the links above a
 The model of the graph database consists of 5 nodes and 5 relationships. Each one of them contain the information of every player, team and coach.
 
 <img src="https://soccer-project-images-readme.s3.us-west-2.amazonaws.com/image-3.png" alt="image-3" style="display: block;margin-left: auto;margin-right: auto;width: 50%;">
-<p style="text-align: center"><b>Image 3 | DB Model</b></p>
 
 The data imported from the csv file will be stored into a graph database following the model above.
 
@@ -99,7 +98,6 @@ MATCH (n) return (n)
 You should see a populated graph database like this:
 
 ![image-4](https://soccer-project-images-readme.s3.us-west-2.amazonaws.com/image-4.png)
-<p style="text-align: center"><b>Image 4 | Populated DB</b></p>
 
 Now, everything is ready to start running queries.
 
