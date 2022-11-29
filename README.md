@@ -1,4 +1,4 @@
-# Liga MX Analysis
+# CSV Importer
 This is an academic project that uses Laravel alongside Neo4J to perform analysis on the main soccer league in Mexico: Liga MX.
 
 ## Introduction
