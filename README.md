@@ -3,7 +3,7 @@ This is an academic project that Uses Laravel and Neo4J to import statistics fro
 
 ## Introduction
 
-The main purpose of the project is to create an import tool that can...
+The main purpose of the project is to create an import tool that can....
 
 The main purpose of the project is to create a visual interface where anyone can see statistics of the latest season in _Liga Mx. All statistics about the games, players, managers, etc. will be imported from a csv file and stored in a graph database using Neo4j. It's important to mention
 that even though there are a couple open source projects available to integrate neo4j with Eloquent, we decided to use 
