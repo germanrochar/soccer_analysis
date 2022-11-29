@@ -31,8 +31,12 @@ If you want to take a look at the information, please click on the links above a
 
 ### Graph database design
 
+The model of the graph database consists of 5 nodes and 5 relationships. Each one of them contain the information of every player, team and coach.
 
-![image-4](https://soccer-project-images-readme.s3.us-west-2.amazonaws.com/image-4.png)
+<img src="https://soccer-project-images-readme.s3.us-west-2.amazonaws.com/image-3.png" alt="image-3" style="display: block;margin-left: auto;margin-right: auto;width: 50%;">
+<p style="text-align: center"><b>Image 3 | DB Model</b></p>
+
+The data imported from the csv file will be stored into a graph database following the model above.
 
 ### Neo4J Configuration
 Download and install [Neo4J for Desktop](https://neo4j.com/download/). You can follow
@@ -94,6 +98,17 @@ MATCH (n) return (n)
 
 You should see a populated graph database like this:
 
-![image-3](https://soccer-project-images-readme.s3.us-west-2.amazonaws.com/image-3.png)
+![image-4](https://soccer-project-images-readme.s3.us-west-2.amazonaws.com/image-4.png)
+<p style="text-align: center"><b>Image 4 | Populated DB</b></p>
 
 Now, everything is ready to start running queries.
+
+## Improvements
+
+The importer can be improved in the following areas:
+
+- Validate data inside the csv file while performing the import
+- Configure github actions
+- Add unit tests
+
+These improvements will be completed in a couple months but I don't have any due dates since this is a side project and I don't have too much time to work on it.
